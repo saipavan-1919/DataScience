@@ -1,0 +1,71 @@
+	Path finding is one of the example in the searching problems in AI
+																	
+																
+	Steps in Search problem:
+		• Initial state	Starting state of the problem
+		Actions	Actions need to be taken for next steps
+		Transition model	A model which will try to find the best steps for finding solution
+		Goal test	Check whether we reached the solution or not
+		Path cost function	Steps/time took to reach the destination 
+	
+	Node:
+		• A data structure that keeps the track of 
+			§ State
+			§ A parent node (node that generated this node)
+			§ An function (action applied to parent node to get this node)
+			§ A path cost (steps/ time take from initial state to this node)
+	
+	Approach:
+		• Start with a frontier that contains the initial state (head)
+		• Keep the track of explored states list
+		• Repeat
+			§ If the frontier is empty, then no solution
+			(if there is no starting point then we can find the solution)
+			§ Remove a node from the frontier (move the node to next node)
+			§ Add the present node into the explored nodes list
+			§ If node contains goal state return the solution
+			§ Expand node, add resulting nodes to the frontier If the node is not explored
+	
+	Depth-First search (DFS)
+		In this mode we use the stack method to find the solution (last come first out)(searches a path completely)
+		Lets consider a path example like below:
+			Problem : find path from node a to node e
+		
+					
+		In this model DFS it will follow steps like below
+			• Starts from node a
+			• Goes to node b
+			• Then adds both nodes c and d to the list [c,d]
+			• This method will goes to node d as this follows stack flow (last come first out)
+			• Then goes to node f and as there is no way goes back to node c
+			• Then goes to node e and as e is the destination returns the result
+		Once this enters a path then it will go to the end of the path that's why this is called as Depth First search (DFS)
+		In this process total steps taken : 5
+		Some times this process will take the longer steps as this goes till end of a path when entered
+		In this process sometimes we can find the destination sometimes it takes the long depends on the decision taken by model
+		
+	Breadth-First search (BFS):
+		In this method we use the queue method (first come first out) (goes step by step in each path)
+		Lets consider the same example as above to explain this method too:
+Problem : find path from node a to node e
+						
+		In this BFS model it will follow the steps like below
+			• Starts from node a
+			• Goes to node b
+			• Then adds node c and d to the list [c,d]
+			• Then goes to node c and then node d
+			• In next step goes to node e as e is the destination returns the result
+		Whenever it takes a decision it will go paralelly in all side
+		In this process total steps taken : 4
+		In this process this follows the similar steps so it will find the destination in less number of steps sometimes.
+		
+		
+	We can divide the Search Algorithms into 2 categories
+		1) Uniformed search
+			Search strategy uses no problem specific knowledge 
+			Ex: DFS (Depth First search) and BFS (Breadth First search)
+		2) Informed search
+			Search strategy used problem specific knowledge to find the solution more efficiently
+			Ex: In a maze it know the coordinates of starting point, ending point and it uses the current position coordinates 
+       to go to the destination.
+			Greedy best First search (GBFS)
